@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+group 'dev.zvwild'
+version '1.0-SNAPSHOT'
+
+configurations {
+    shade
+}
+
+jar {
+    from {configurations.shade.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+sourceCompatibility = 16
+targetCompatibility = 16
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT'
+    compileOnly project(':minpc-api')
+    shade project(':minpc-api')
+}

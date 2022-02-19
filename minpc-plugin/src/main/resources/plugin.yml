@@ -1,0 +1,5 @@
+main: dev.zvwild.minpc.plugin.MinpcPlugin
+name: Minpc
+version: 1.0-SNAPSHOT
+api-version: 1.17
+author: zvwild
