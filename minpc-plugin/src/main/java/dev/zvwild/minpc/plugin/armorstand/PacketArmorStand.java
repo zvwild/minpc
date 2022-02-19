@@ -13,7 +13,7 @@ import net.minecraft.network.syncher.DataWatcherObject;
 import net.minecraft.network.syncher.DataWatcherRegistry;
 import net.minecraft.world.entity.EntityTypes;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -33,12 +33,12 @@ public final class PacketArmorStand {
     }
 
     public void spawn(Player player) {
-        ((CraftPlayer) player).getHandle().b.sendPacket(spawnPacket);
-        ((CraftPlayer) player).getHandle().b.sendPacket(metadataPacket);
+        ((CraftPlayer) player).getHandle().b.a(spawnPacket);
+        ((CraftPlayer) player).getHandle().b.a(metadataPacket);
     }
 
     public void deSpawn(Player player) {
-        ((CraftPlayer) player).getHandle().b.sendPacket(deSpawnPacket);
+        ((CraftPlayer) player).getHandle().b.a(deSpawnPacket);
     }
 
     public static PacketArmorStand create(String text, Location location) {
@@ -54,7 +54,7 @@ public final class PacketArmorStand {
         PacketDataSerializer packetDataSerializer = new PacketDataSerializer(Unpooled.buffer());
         packetDataSerializer.d(id);
         packetDataSerializer.a(uuid);
-        packetDataSerializer.d(IRegistry.Y.getId(EntityTypes.c));
+        packetDataSerializer.d(IRegistry.Z.a(EntityTypes.c));
         packetDataSerializer.writeDouble(location.getX());
         packetDataSerializer.writeDouble(location.getY());
         packetDataSerializer.writeDouble(location.getZ());

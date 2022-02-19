@@ -10,7 +10,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.network.PlayerConnection;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
@@ -53,14 +53,14 @@ public final class NpcImpl implements Npc {
 
             new OperationUpdateName(this, nameTag).executeFor(player);
 
-            c.sendPacket(npcPacketFactory.getPacket(NpcPacket.SCOREBOARD_TEAM));
-            c.sendPacket(npcPacketFactory.getPacket(NpcPacket.ADD_TO_PLAYER_INFO));
-            c.sendPacket(npcPacketFactory.getPacket(NpcPacket.SPAWN));
-            c.sendPacket(npcPacketFactory.getPacket(NpcPacket.META_DATA));
-            c.sendPacket(npcPacketFactory.getPacket(NpcPacket.LOOK));
-            c.sendPacket(npcPacketFactory.getPacket(NpcPacket.HEAD_ROTATION));
+            c.a(npcPacketFactory.getPacket(NpcPacket.SCOREBOARD_TEAM));
+            c.a(npcPacketFactory.getPacket(NpcPacket.ADD_TO_PLAYER_INFO));
+            c.a(npcPacketFactory.getPacket(NpcPacket.SPAWN));
+            c.a(npcPacketFactory.getPacket(NpcPacket.META_DATA));
+            c.a(npcPacketFactory.getPacket(NpcPacket.LOOK));
+            c.a(npcPacketFactory.getPacket(NpcPacket.HEAD_ROTATION));
             Bukkit.getScheduler().runTaskLater(MinpcPlugin.getPlugin(MinpcPlugin.class), () ->
-                    c.sendPacket(npcPacketFactory.getPacket(NpcPacket.REMOVE_FROM_PLAYER_INFO)), 60);
+                    c.a(npcPacketFactory.getPacket(NpcPacket.REMOVE_FROM_PLAYER_INFO)), 60);
         }
 
     }
@@ -69,8 +69,8 @@ public final class NpcImpl implements Npc {
     public void deSpawn(Player player) {
         if (playersSpawnedTo.remove(player.getUniqueId())) {
             PlayerConnection c = ((CraftPlayer) player).getHandle().b;
-            c.sendPacket(npcPacketFactory.getPacket(NpcPacket.DE_SPAWN));
-            c.sendPacket(npcPacketFactory.getPacket(NpcPacket.REMOVE_FROM_PLAYER_INFO));
+            c.a(npcPacketFactory.getPacket(NpcPacket.DE_SPAWN));
+            c.a(npcPacketFactory.getPacket(NpcPacket.REMOVE_FROM_PLAYER_INFO));
             nameTag.deSpawn(player);
 
             Map<UUID, PacketArmorStand> nameTags = OperationUpdateName.PLAYER_NAME_TAG_MAP.get(player.getUniqueId());

@@ -6,7 +6,7 @@ import dev.zvwild.minpc.plugin.npc.MinpcRuntimeImpl;
 import dev.zvwild.minpc.plugin.npc.OperationUpdateName;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

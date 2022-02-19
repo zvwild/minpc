@@ -2,7 +2,7 @@ package dev.zvwild.minpc.plugin.npc;
 
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.network.PlayerConnection;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 public final class OperationLookAt extends OperationImpl {
@@ -19,8 +19,8 @@ public final class OperationLookAt extends OperationImpl {
     @Override
     protected void execute(Player player) {
         PlayerConnection c = ((CraftPlayer) player).getHandle().b;
-        c.sendPacket(lookPacket);
-        c.sendPacket(headRotPacket);
+        c.a(lookPacket);
+        c.a(headRotPacket);
     }
 
 }
